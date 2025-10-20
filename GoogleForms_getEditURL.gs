@@ -4,10 +4,12 @@
  * This function must be run manually from the script editor.
  
  Kimiya Kitani
+ 
+ 20 October 2025: Version 1.0
  */
 // A = 1, B = 2, .... D = 4, .... 
 // Please specify the column number for which you want to put an edit URL. Please note that the selected column value is overwritten.
-const saveTocolumn = 4;
+const saveTocolumn = 0;
 
 function getPastEditUrls() {
   // ▼▼▼ CONFIGURATION ▼▼▼
@@ -21,6 +23,9 @@ function getPastEditUrls() {
     const form = FormApp.openById(formId);
     if (!form) {
       throw new Error('Could not find the form with the specified ID.');
+    }
+    if (saveTocolumn <= 0){
+      throw new Error('Please specify "saveTocolumn" elements in Google Apps Script.')   
     }
     // Get the active sheet in the currently open spreadsheet.
     const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
